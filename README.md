@@ -17,7 +17,7 @@ Recently, efficient Multimodal Large Language Models (MLLMs) have gained signifi
     pip install -r requirements.txt
 
 ## Data Construction
-We use LLaVA Pre-Training dataset in DPT stage and LLaVA Fine-Tuning dataset in DFT and SFT stage. 
+We use [LLaVA Pre-Training dataset](https://huggingface.co/datasets/liuhaotian/LLaVA-Pretrain/tree/main) in DPT stage and [LLaVA Fine-Tuning dataset](https://huggingface.co/datasets/liuhaotian/LLaVA-Instruct-150K/tree/main) in DFT and SFT stage. 
 
 ## Training
     bash scripts/train/lora/distill_dpt.sh # Distilled Pre-Training (DPT)
