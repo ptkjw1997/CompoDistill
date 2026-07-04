@@ -17,9 +17,9 @@ Recently, efficient Multimodal Large Language Models (MLLMs) have gained signifi
 
 | Model | Base LLM | Description | Link |
 |---|---|---|---|
-| CompoDistill-Teacher-4B | Qwen1.5-4B | Teacher MLLM (LLaVA-style visual instruction tuning) | [🤗 HuggingFace](https://huggingface.co/ptkjw1997/CompoDistill-Teacher-4B) |
-| CompoDistill-SFT-2B | Qwen1.5-1.8B | Student baseline trained without distillation | [🤗 HuggingFace](https://huggingface.co/ptkjw1997/CompoDistill-SFT-2B) |
-| CompoDistill-2B | Qwen1.5-1.8B | Final CompoDistill student (DPT → DFT → SFT) | [🤗 HuggingFace](https://huggingface.co/ptkjw1997/CompoDistill-2B) |
+| CompoDistill-Teacher-4B | Qwen1.5-4B | Teacher MLLM (LLaVA-style visual instruction tuning) | [🤗 HuggingFace](https://huggingface.co/JiwanKim/CompoDistill-Teacher-4B) |
+| CompoDistill-SFT-2B | Qwen1.5-1.8B | Student baseline trained without distillation | [🤗 HuggingFace](https://huggingface.co/JiwanKim/CompoDistill-SFT-2B) |
+| CompoDistill-2B | Qwen1.5-1.8B | Final CompoDistill student (DPT → DFT → SFT) | [🤗 HuggingFace](https://huggingface.co/JiwanKim/CompoDistill-2B) |
 
 All released checkpoints are merged full weights and can be used without this repository:
 
@@ -28,7 +28,7 @@ import torch
 from PIL import Image
 from transformers import AutoModelForCausalLM, AutoTokenizer, AutoImageProcessor
 
-repo = "ptkjw1997/CompoDistill-2B"
+repo = "JiwanKim/CompoDistill-2B"
 model = AutoModelForCausalLM.from_pretrained(repo, trust_remote_code=True,
                                              torch_dtype=torch.float16).to("cuda")
 tokenizer = AutoTokenizer.from_pretrained(repo, use_fast=False)
@@ -39,7 +39,7 @@ print(model.chat("What is happening in this image?", tokenizer,
                  image=image, image_processor=image_processor))
 ```
 
-or with this repository: `python inference_example.py --model ptkjw1997/CompoDistill-2B --image example.jpg --question "..."`.
+or with this repository: `python inference_example.py --model JiwanKim/CompoDistill-2B --image example.jpg --question "..."`.
 
 ## Installation
 
@@ -92,7 +92,7 @@ LLM_VERSION=Qwen/Qwen1.5-1.8B bash scripts/train/finetune.sh
 ```
 
 You can skip the teacher training by pointing `--pretrained_teacher_model_path` at the
-released merged teacher (`ptkjw1997/CompoDistill-Teacher-4B`).
+released merged teacher (`JiwanKim/CompoDistill-Teacher-4B`).
 
 **1–3) CompoDistill pipeline**:
 
